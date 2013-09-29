@@ -29,12 +29,14 @@ do
       op=${c[0]}
       table=${c[1]}
       param=${c[2]}
+      : ${param:="1=1"}
       case $op in
         "d") sql="desc $table;";;
         "s") sql="show create table $table;";;
-        "l") sql="select * from $table;";;
-        "c") sql="select count(*) from $table;";;
+        "l") sql="select * from $table where $param;";;
+        "c") sql="select count(*) from $table where $param;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
+        "del") sql="delete from $table where $param;";;
         *)   sql=$x;;
       esac
       echo "$sql"
