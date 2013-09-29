@@ -11,12 +11,14 @@
 # require: user, pass, db
 source .my.cnf
 : ${user:="root"}
-: ${pass:="root"}
-: ${db:="test"}
-echo "will login by: mysql $db -u$user -p$pass"
+: ${password:="root"}
+: ${database:="test"}
+: ${database:="test"}
+: ${host:="localhost"}
+echo "will login by: mysql $database -u$user -p$password"
 
 #
-while read -p 'SQL> ' line
+while read -p "$user@host:$database> " line
 do
   case $line in
     "q")
@@ -40,7 +42,7 @@ do
         *)   sql=$x;;
       esac
       echo "$sql"
-      eval "mysql $db -u$user -p$pass -e '$sql' "
+      eval "mysql $database -u$user -p$password -e '$sql' "
       echo
       ;;
   esac
