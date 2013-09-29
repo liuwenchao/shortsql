@@ -1,4 +1,4 @@
-# Project Name
+# gurusql
 
 A collection of scripts to run SQL in a shorter way, like:
 ```
