@@ -7,20 +7,20 @@ l users -- equivlant to: select * from users;
 
 ## Installation
 
-# Download
-# Change Configuration File or just test with the default
+1. Download or clone
+1. Change Configuration File or just test with the default
 
 ## Usage
 
-# Run it
+1. Run the script
 
 ## Contributing
 
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+1. Create your feature branch: `git checkout -b my-new-feature`
+1. Commit your changes: `git commit -am 'Add some feature'`
+1. Push to the branch: `git push origin my-new-feature`
+1. Submit a pull request :D
 
 ## History
 
