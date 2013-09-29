@@ -13,7 +13,7 @@ source .my.cnf
 : ${user:="root"}
 : ${pass:="root"}
 : ${db:="test"}
-echo "login by: mysql $db -u$user -p$pass"
+echo "will login by: mysql $db -u$user -p$pass"
 
 #
 while read -p 'SQL> ' line
@@ -30,6 +30,8 @@ do
       table=${c[1]}
       param=${c[2]}
       case $op in
+        "d") sql="desc $table;";;
+        "s") sql="show create table $table;";;
         "l") sql="select * from $table;";;
         "c") sql="select count(*) from $table;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
