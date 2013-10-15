@@ -13,8 +13,8 @@ source .my.cnf
 : ${user:="root"}
 : ${password:="root"}
 : ${database:="test"}
-: ${database:="test"}
 : ${host:="localhost"}
+
 echo "will login by: mysql $database -u$user -p$password"
 
 #
@@ -30,7 +30,7 @@ do
       c=($(echo $line))
       op=${c[0]}
       table=${c[1]}
-      param=${c[2]}
+      param=${c[@]:2}
       : ${param:="1=1"}
       case $op in
         "d") sql="desc $table;";;
@@ -39,10 +39,11 @@ do
         "c") sql="select count(*) from $table where $param;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
         "del") sql="delete from $table where $param;";;
-        *)   sql=$x;;
+        "use") database=$table;;
+        *)     sql=$line;;
       esac
       echo "$sql"
-      eval "mysql $database -u$user -p$password -e '$sql' "
+      eval mysql $database -u$user -p$password -e \' $sql \'
       echo
       ;;
   esac
