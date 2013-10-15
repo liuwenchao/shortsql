@@ -36,8 +36,9 @@ do
       : ${param:="1=1"}
       case $op in
         "d") sql="desc $table;";;
-        "s") sql="show create table $table;";;
+        "c") sql="show create table $table;";;
         "l") sql="select * from $table where $param;";;
+        "s") sql="select ${c[2]} from $table where ${c[@]:3};";;
         "c") sql="select count(*) from $table where $param;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
         "del") sql="delete from $table where $param;";;
@@ -53,7 +54,7 @@ do
         *)     sql=$line;;
       esac
       echo "$sql"
-      eval mysql $database -u$user -p$password -e \' $sql \'
+      eval "mysql $database -u$user -p$password -e ' $sql '"
       echo
       ;;
   esac
