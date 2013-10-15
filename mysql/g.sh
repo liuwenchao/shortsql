@@ -7,6 +7,8 @@
 # @see https://github.com/liuwenchao/sql_guru
 # @license MIT
 
+# @todo up and down keys for history
+
 
 # require: user, pass, db
 source .my.cnf
@@ -40,6 +42,14 @@ do
         "g") sql="select $param, count(*) from $table group by $param;";;
         "del") sql="delete from $table where $param;";;
         "use") database=$table;;
+
+        # array keys
+        # up key
+        $'\e[A') echo 'up key';;
+        # down key
+        $'\e[B') echo 'down key';;
+
+        # fall back
         *)     sql=$line;;
       esac
       echo "$sql"
