@@ -16,6 +16,8 @@ l users -- equivlant to: select * from users;
 
 ## Contributing
 
+Scripts are needed for other databases.
+
 1. Fork it!
 1. Create your feature branch: `git checkout -b my-new-feature`
 1. Commit your changes: `git commit -am 'Add some feature'`
