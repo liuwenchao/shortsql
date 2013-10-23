@@ -7,7 +7,9 @@
 # @see https://github.com/liuwenchao/sql_guru
 # @license MIT
 
-# @todo up and down keys for history
+# @todo 
+# up and down keys for history
+# auto discovery on foreign keys
 
 
 # require: user, pass, db
@@ -17,7 +19,12 @@ source .my.cnf
 : ${database:="test"}
 : ${host:="localhost"}
 
-echo "will login by: mysql $database -u$user -p$password"
+# ARGS: $1 log message
+log() {
+  echo -e "\033[1;34m $1 \033[0m"
+}
+
+# log "will login by: mysql $database -u$user -p$password"
 
 #
 while read -p "$user@host:$database> " line
@@ -53,7 +60,7 @@ do
         # fall back
         *)     sql=$line;;
       esac
-      echo "$sql"
+      log "$sql"
       eval "mysql $database -u$user -p$password -e ' $sql '"
       echo
       ;;
