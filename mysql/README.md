@@ -5,7 +5,8 @@
 TODO
  
 ## Usage
-1. Configure file: .my.cnf 
+1. use your own .my.cnf or rename example configure file my.cnf to .my.cnf 
+2. run `./g.sh`
  
 ## Contributing
  
