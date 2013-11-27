@@ -1,4 +1,4 @@
-# gurusql for mysql
+# shortsql for mysql
  
 
 ## Installation
