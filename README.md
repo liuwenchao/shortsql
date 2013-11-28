@@ -24,6 +24,11 @@ Scripts are needed for other databases.
 1. Push to the branch: `git push origin my-new-feature`
 1. Submit a pull request :D
 
+## TODO
+1. history
+2. auto-completion
+3. more database adaptors
+
 ## History
 
 TODO: Write history
