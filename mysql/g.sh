@@ -8,8 +8,9 @@
 # @license MIT
 
 # @todo 
-# up and down keys for history
+# up and down keys for HISTORY
 # auto discovery on foreign keys
+# help manual
 
 
 # require: user, pass, db
@@ -19,24 +20,48 @@ source .my.cnf
 : ${database:="test"}
 : ${host:="localhost"}
 
+
+case $# in
+  1)
+    # first arg is database
+    database=$1;;
+  *)
+   ;;
+esac
+
 # ARGS: $1 log message
 log() {
   echo -e "\033[1;34m $1 \033[0m"
 }
 
-# log "will login by: mysql $database -u$user -p$password"
+log "will login by: mysql $database -u$user -p$password"
 
-#
 while read -p "$user@host:$database> " line
 do
+  HISTORY[${#HISTORY[*]}]="$line"
   case $line in
     "q")
       echo "dash out."
       break;;
     "h"|"help") 
       echo "see the source code, you are a guru.";;
+
+    # up key
+    $'\e[A') 
+       : ${CURSOR:=${#HISTORY[*]}}
+       ((CURSOR--))
+       line=${HISTORY[$CURSOR]}
+       ;;
+
+    # down key
+    $'\e[B') 
+       
+       ((CURSOR++))
+       line=${HISTORY[$CURSOR]}
+       ;;
+
     *)
-      c=($(echo $line))
+      c=($(echo "$line"))
       op=${c[0]}
       table=${c[1]}
       param=${c[@]:2}
@@ -50,12 +75,6 @@ do
         "g") sql="select $param, count(*) from $table group by $param;";;
         "del") sql="delete from $table where $param;";;
         "use") database=$table;;
-
-        # array keys
-        # up key
-        $'\e[A') echo 'up key';;
-        # down key
-        $'\e[B') echo 'down key';;
 
         # fall back
         *)     sql=$line;;
