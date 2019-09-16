@@ -12,7 +12,10 @@ l users -- equivlant to: select * from users;
 
 ## Usage
 
-1. Run the script
+1. `cd mysql`
+2. `cp my.cnf .my.cnf`
+3. change .my.cnf to your configuration
+4. `sh ./g.sh`
 
 ## Contributing
 
