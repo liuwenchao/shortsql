@@ -69,7 +69,8 @@ do
       case $op in
         "d") sql="desc $table;";;
         "sh") sql="show create table $table;";;
-        "l") sql="select * from $table where $param;";;
+        "li") sql="select * from $table limit $param;";;
+        "l") sql="select * from $table where $param limit 100;";;
         "s") sql="select ${c[2]} from $table where ${c[@]:3};";;
         "c") sql="select count(*) from $table where $param;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
