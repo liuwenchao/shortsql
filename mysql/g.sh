@@ -36,7 +36,7 @@ log() {
 
 log "will login by: mysql $database -h $host -P $port -u $user -p"
 
-while read -p "$user@host:$database> " line
+while read -p "$user@$host:$database> " line
 do
   HISTORY[${#HISTORY[*]}]="$line"
   case $line in
