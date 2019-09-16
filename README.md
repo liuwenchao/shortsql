@@ -10,12 +10,28 @@ l users -- equivlant to: select * from users;
 1. Download or clone
 1. Change Configuration File or just test with the default
 
-## Usage
+## Mysql Usage
 
 1. `cd mysql`
 2. `cp my.cnf .my.cnf`
 3. change .my.cnf to your configuration
 4. `sh ./g.sh`
+
+## Example
+```mysql
+l users
+; select * from users;
+s users name,type id=1
+; select name,type from users where id=1; 
+c users
+; select count(*) from users;
+sh users
+; show create table users;
+g users name
+; select name, count(*) from users group by name;
+del users id=1
+; delete from users where id=1;
+```
 
 ## Contributing
 
