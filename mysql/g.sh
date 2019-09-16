@@ -74,7 +74,10 @@ do
         "c") sql="select count(*) from $table where $param;";;
         "g") sql="select $param, count(*) from $table group by $param;";;
         "del") sql="delete from $table where $param;";;
-        "use") database=$table;;
+        "use") 
+            database=$table
+            sql="show tables"
+            ;;
 
         # fall back
         *)     sql=$line;;
