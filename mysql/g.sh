@@ -63,7 +63,7 @@ do
     *)
       c=($(echo "$line"))
       op=${c[0]}
-      table=${c[1]}
+      table=${c[1]:-$table}
       param=${c[@]:2}
       : ${param:="1=1"}
       case $op in
