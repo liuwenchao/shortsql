@@ -68,7 +68,7 @@ do
       : ${param:="1=1"}
       case $op in
         "d") sql="desc $table;";;
-        "show"|"sh") sql="show create table $table;";;
+        "sh") sql="show create table $table;";;
         "l") sql="select * from $table where $param;";;
         "s") sql="select ${c[2]} from $table where ${c[@]:3};";;
         "c") sql="select count(*) from $table where $param;";;
